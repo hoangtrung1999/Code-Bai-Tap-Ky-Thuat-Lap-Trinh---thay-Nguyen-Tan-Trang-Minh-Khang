@@ -33,8 +33,7 @@ int FindMax (LuanVan ListLuanVan[100], int n)
 	for (int i = 0 ; i < n; i++)
 		{
 			Year = ListLuanVan[i].Year;
-			count = 0;
-			for (int j = i ; j < n ; j++)
+			for (int j = 0 ; j < n ; j++)
 				if ( ListLuanVan[j].Year == Year)
 					count++;
 			if (count > MaxCount)
@@ -44,25 +43,6 @@ int FindMax (LuanVan ListLuanVan[100], int n)
 			}
 		}
 	return MaxYear;
-}
-
-void FindTheNearest(LuanVan ListLuanVan[100], int n,int x)
-{
-	int temp;
-	for (int i = 0 ; i < n - 1 ;  i++)
-		for (int j = i + 1 ; j < n ; j++)
-			if (abs(ListLuanVan[i].Year-x) > abs(ListLuanVan[j].Year-x))
-			{
-				temp = ListLuanVan[i].Year;
-				ListLuanVan[i].Year = ListLuanVan[j].Year;
-				ListLuanVan[j].Year = temp;
-			}
-	int k = 0 ;
-	while (ListLuanVan[k].Year == ListLuanVan[0].Year)
-	{
-		cout<<ListLuanVan[k].Name<<" ";
-		k++;
-	}
 }
 
 void Output(LuanVan luanvan)
@@ -107,14 +87,9 @@ int main()
 				}
 				break;
 			case 2:
-				cout<<FindMax(ListLuanVan,n)<<endl;
+				cout<<FindMax(ListLuanVan,n);
 				break;
 			case 3:
-				cout<<"Nhap vao nam hien tai: ";
-				int x;
-				cin>>x;
-				cout<<"Nhung luan van duoc lam gan day nhat la: ";
-				FindTheNearest(ListLuanVan,n,x);
 				break;
 			case 4: 
 				return 0;
